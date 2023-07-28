@@ -4,14 +4,16 @@
 <h1>Destination Details</h1>
 
 <div class="card">
-  <a href="/destinations/{{ destination.id }}">
     <div class="card-content">
       <span class="card-title">{{ destination.location }}</span>
       <p>Continent: {{ destination.continent }}</p>
       <p>Climate: {{ destination.climate }}</p>
       <p>Language: {{ destination.language }}</p>
     </div>
-  </a>
+    <div class="card-action">
+      <a href="{% url 'destinations_update' destination.id %}">Edit</a>
+      <a href="{% url 'destinations_delete' destination.id %}">Delete</a>
+    </div>
 </div>
 
 {% endblock %}

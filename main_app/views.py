@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Destination
 
 
@@ -21,3 +22,15 @@ def destinations_detail(request, destination_id):
   return render(request, 'destinations/detail.html', {
     'destination': destination
   })
+
+class DestinationCreate(CreateView):
+  model = Destination
+  fields = '__all__'
+ 
+class DestinationUpdate(UpdateView):
+  model = Destination
+  fields = ['location','continent', 'climate', 'language']
+
+class DestinationDelete(DeleteView):
+  model = Destination
+  success_url = '/destinations'
