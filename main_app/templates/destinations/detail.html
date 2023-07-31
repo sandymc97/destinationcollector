@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Destination Details</h1>
+<h1>{{ destination.location}} Details</h1>
 
 
 <div class="row">
   <div class="col s6">
     <div class="card">
       <div class="card-content">
-        <span class="card-title">{{ destination.location }}</span>
+        <span class="card-title">{{ destination.location}}</span>
         <p>Continent: {{ destination.continent }}</p>
         <p>Climate: {{ destination.climate }}</p>
         <p>Language: {{ destination.language }}</p>
@@ -42,9 +42,56 @@
   </div>
   <!-- New Markup Above -->
 </div>
+<hr>
+<div class="row">
+  <div class="col s6">
+    <h3>Activities for {{ destination.location }}</h3>
+    {% if destination.activities.count %}
+      {% for activity in destination.activities.all %}
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title">
+               <span style="color: {{ activity.name }}">{{ activity.name }}</span>
+            </span>
+        </div>
+        <div class="card-action">
+            <form action="{% url 'unassoc_activity' destination.id activity.id %}" method="POST">
+              {% csrf_token %}
+              <button type="submit" class="btn">Remove</button>
+            </form>
+        </div>
+      </div>
+      {% endfor %}
+    {% else %}
+      <h5>No activities 😿</h5>
+    {% endif %}
+  </div>
+  <div class="col s6">
+    <h3>Available Activities</h3>
+    {% if activities.count %}
+      {% for activity in activities.all %}
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">
+              <span style="color: {{ activity.name }}">{{ activity.name }}</span>
+            </span>
+          </div>
+          <div class="card-action">
+            <form action="{% url 'assoc_activity' destination.id activity.id %}" method="POST">
+              {% csrf_token %}
+              <button type="submit" class="btn">Add</button>
+            </form>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <h5> All Activities Added for {{destination.location}} </h5>
+    {% endif %}
+  </div>
+</div>
+
 <script>
   const dateEl = document.getElementById('id_date');
-  // M is Materialize's global variable
   M.Datepicker.init(dateEl, {
     format: 'yyyy-mm-dd',
     defaultDate: new Date(),

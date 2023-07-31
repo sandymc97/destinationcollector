@@ -15,10 +15,12 @@
     <nav>
       <div class="nav-wrapper">
         <ul>
-          <li><a href="{% url 'home' %}">&nbsp;&nbsp;Destination Collector</a></li>
+          <li><a href="{% url 'home' %}">&nbsp;&nbsp;Destination Planner</a></li>
         </ul>
         <ul class="right">
             <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'activities_create' %}">Add an Activity</a></li>
+            <li><a href="{% url 'activities_index' %}">View All Activities</a></li>
             <li><a href="{% url 'destinations_create' %}">Add a Destination</a></li>
             <li><a href="{% url 'index' %}">View All Destinations</a></li>
             <li><a href="{% url 'home' %}">Home</a></li>
