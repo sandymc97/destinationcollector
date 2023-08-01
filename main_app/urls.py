@@ -10,6 +10,7 @@ urlpatterns = [
     path('destinations/<int:pk>/update/', views.DestinationUpdate.as_view(), name='destinations_update'),
     path('destinations/<int:pk>/delete/', views.DestinationDelete.as_view(), name='destinations_delete'),
     path('destinations/<int:destination_id>/add_weather/', views.add_weather, name='add_weather'),
+    path('destinations/<int:destination_id>/add_photo/', views.add_photo, name='add_photo'),
     path('destinations/<int:destination_id>/assoc_activity/<int:activity_id>/', views.assoc_activity, name='assoc_activity'),
     path('destinations/<int:destination_id>/unassoc_activity/<int:activity_id>/', views.unassoc_activity, name='unassoc_activity'),
     path('activities/', views.ActivityList.as_view(), name='activities_index'),

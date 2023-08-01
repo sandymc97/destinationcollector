@@ -2,6 +2,20 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background-image: url('https://i.imgur.com/wFkMsH5.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.64);
+  }
+
+  h1{
+    color: rgb(15, 90, 28);
+    background-color: rgba(255, 255, 255, 0.633);
+    border-radius: 10px;
+    text-align: center;
+    margin-left: 10rem;
+    margin-right: 10rem;
+    font-family: 'Bebas Neue', sans-serif;
   }
   
   main {
@@ -12,3 +26,5 @@ body {
     padding-top: 0;
     text-align: right;
   }
+
+ 
